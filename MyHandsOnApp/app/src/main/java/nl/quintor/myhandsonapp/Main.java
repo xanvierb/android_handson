@@ -64,7 +64,7 @@ public class Main extends AppCompatActivity {
 
             NewsItemFragment newsItemFragment = (NewsItemFragment) getFragmentManager().findFragmentById(R.id.fragment1);
 
-            if(obj != null && obj.getArticles().isEmpty()){
+            if(obj != null && !obj.getArticles().isEmpty()){
                 newsItemFragment.setNewsTitle(obj.getArticles().get(0).getTitle());
                 newsItemFragment.setNewsDescription(obj.getArticles().get(0).getDescription());
                 newsItemFragment.setNewsAuthor(obj.getArticles().get(0).getAuthor());
