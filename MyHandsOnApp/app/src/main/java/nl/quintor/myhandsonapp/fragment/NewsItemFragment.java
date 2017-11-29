@@ -75,7 +75,7 @@ public class NewsItemFragment extends Fragment {
         // Inflate the layout for this fragment
 
         newsTitleView = (TextView) retView.findViewById(R.id.newsTitle);
-        newsDescriptionView = (TextView) retView.findViewById(R.id.NewsDescription);
+        newsDescriptionView = (TextView) retView.findViewById(R.id.newsDescription);
         newsAuthorView = (TextView) retView.findViewById(R.id.newsAuthor);
         newsAgeView = (TextView) retView.findViewById(R.id.newsAge);
         newsImageView = (ImageView) retView.findViewById(R.id.imageView);

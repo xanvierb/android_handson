@@ -10,6 +10,7 @@ public class NewsItem {
     private String newsDescription;
     private String newsAuthor;
     private String newsAge;
+    private String newsUrl;
 
     public String getImageUrl() {
         return imageUrl;
@@ -50,4 +51,14 @@ public class NewsItem {
     public void setNewsAge(String newsAge) {
         this.newsAge = newsAge;
     }
+
+    public String getNewsUrl() {
+        return newsUrl;
+    }
+
+    public void setNewsUrl(String newsUrl) {
+        this.newsUrl = newsUrl;
+    }
+
+
 }

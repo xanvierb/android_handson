@@ -35,7 +35,7 @@
             >
 
 
-            <fragment
+           <!-- <fragment
                 android:id="@+id/fragment1"
                 android:name="nl.quintor.myhandsonapp.fragment.NewsItemFragment"
                 android:layout_width="match_parent"
@@ -70,9 +70,15 @@
                 android:layout_weight="1"
                 tools:layout="@layout/fragment_news_item"
                 tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="43dp" />
+                tools:layout_editor_absoluteY="43dp" />-->
 
 
+            <fragment
+                android:id="@+id/fragment"
+                android:name="nl.quintor.myhandsonapp.fragment.NewsItemFragment2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_newsitem_list2"/>
         </LinearLayout>
 
     </ScrollView>
