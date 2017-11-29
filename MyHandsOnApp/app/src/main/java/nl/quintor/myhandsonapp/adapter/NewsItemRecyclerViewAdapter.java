@@ -3,7 +3,6 @@ package nl.quintor.myhandsonapp.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -29,14 +27,11 @@ import java.util.concurrent.TimeUnit;
 
 import nl.quintor.myhandsonapp.R;
 import nl.quintor.myhandsonapp.fragment.NewsItemFragment;
-import nl.quintor.myhandsonapp.fragment.NewsItemFragment2;
-import nl.quintor.myhandsonapp.fragment.NewsItemFragment2.OnListFragmentInteractionListener;
+import nl.quintor.myhandsonapp.fragment.NewsItemFragment.OnListFragmentInteractionListener;
 import nl.quintor.myhandsonapp.model.Article;
 import nl.quintor.myhandsonapp.model.NewsItem;
 import nl.quintor.myhandsonapp.model.Request;
 import nl.quintor.myhandsonapp.rest.NewsRestTask;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link NewsItem} and makes a call to the
@@ -49,7 +44,7 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
     private final OnListFragmentInteractionListener mListener = null;
 
 
-    public NewsItemRecyclerViewAdapter(NewsItemFragment2 newsItemFragment2, OnListFragmentInteractionListener mListener) {
+    public NewsItemRecyclerViewAdapter(NewsItemFragment newsItemFragment2, OnListFragmentInteractionListener mListener) {
         try {
             Gson gson = new Gson();
             String s = new NewsRestTask().execute("https://newsapi.org/v2/top-headlines?apiKey=" + newsItemFragment2.getActivity().getResources().getString(R.string.apikey) + "&language=NL").get();
@@ -58,7 +53,7 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
 
             Request obj = gson.fromJson(s, Request.class);
 
-            NewsItemFragment2 newsItemFragment = newsItemFragment2;
+            NewsItemFragment newsItemFragment = newsItemFragment2;
 
             if(obj != null && !obj.getArticles().isEmpty()){
                 for(Article article : obj.getArticles()){
@@ -71,23 +66,11 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
                     newsItem.setNewsUrl(article.getUrl());
                     mValues.add(newsItem);
                 }
-
-
-//
-//                newsItemFragment.setNewsTitle(obj.getArticles().get(0).getTitle());
-//                newsItemFragment.setNewsDescription(obj.getArticles().get(0).getDescription());
-//                newsItemFragment.setNewsAuthor(obj.getArticles().get(0).getAuthor());
-//                String urlToImage = obj.getArticles().get(0).getUrlToImage();
-//                newsItemFragment.setNewsImage(urlToImage );
-//
-
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
         }
     }
 

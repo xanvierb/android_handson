@@ -1,59 +1,58 @@
 package nl.quintor.myhandsonapp.fragment;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import android.net.Uri;
-
 import java.io.InputStream;
 
 import nl.quintor.myhandsonapp.R;
+import nl.quintor.myhandsonapp.adapter.NewsItemRecyclerViewAdapter;
+import nl.quintor.myhandsonapp.model.NewsItem;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link NewsItemFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link NewsItemFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * A fragment representing a list of Items.
+ * <p/>
+ * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * interface.
  */
 public class NewsItemFragment extends Fragment {
+    // TODO: Customize parameter argument names
+    private static final String ARG_COLUMN_COUNT = "column-count";
+    // TODO: Customize parameters
+    private int mColumnCount = 1;
+    private OnListFragmentInteractionListener mListener;
+
     private TextView newsTitleView;
     private TextView newsDescriptionView;
     private TextView newsAuthorView;
     private TextView newsAgeView;
     private ImageView newsImageView;
 
-    private OnFragmentInteractionListener mListener;
-
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
     public NewsItemFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment NewsItem.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NewsItemFragment newInstance(String param1, String param2) {
+    // TODO: Customize parameter initialization
+    @SuppressWarnings("unused")
+    public static NewsItemFragment newInstance(int columnCount) {
         NewsItemFragment fragment = new NewsItemFragment();
         Bundle args = new Bundle();
-        //args.putString(ARG_PARAM1, param1);
-        //args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,43 +60,47 @@ public class NewsItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
+            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_newsitem_list2, container, false);
 
-        View retView = inflater.inflate(R.layout.fragment_news_item, container, false);
-        // Inflate the layout for this fragment
+        newsTitleView = (TextView) view.findViewById(R.id.newsTitle);
+        newsDescriptionView = (TextView) view.findViewById(R.id.newsDescription);
+        newsAuthorView = (TextView) view.findViewById(R.id.newsAuthor);
+        newsAgeView = (TextView) view.findViewById(R.id.newsAge);
+        newsImageView = (ImageView) view.findViewById(R.id.imageView);
 
-        newsTitleView = (TextView) retView.findViewById(R.id.newsTitle);
-        newsDescriptionView = (TextView) retView.findViewById(R.id.newsDescription);
-        newsAuthorView = (TextView) retView.findViewById(R.id.newsAuthor);
-        newsAgeView = (TextView) retView.findViewById(R.id.newsAge);
-        newsImageView = (ImageView) retView.findViewById(R.id.imageView);
+        // Set the adapter
+        if (view instanceof RecyclerView) {
+            Context context = view.getContext();
+            RecyclerView recyclerView = (RecyclerView) view;
+            if (mColumnCount <= 1) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            } else {
+                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+            }
 
-        return retView;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            recyclerView.setAdapter(new NewsItemRecyclerViewAdapter(this, mListener));
         }
+        return view;
     }
+
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) context;
         } else {
 //            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
+//                    + " must implement OnListFragmentInteractionListener");
         }
     }
 
@@ -112,42 +115,18 @@ public class NewsItemFragment extends Fragment {
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p>
+     * <p/>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
-
-    public String setNewsTitle(String newTitle){
-        String returnString = newsTitleView.getText().toString();
-        newsTitleView.setText(newTitle);
-        return returnString;
-    }
-
-    public String setNewsDescription(String newDescription){
-        String returnString = newsDescriptionView.getText().toString();
-        newsDescriptionView.setText(newDescription);
-        return returnString;
-    }
-
-    public String setNewsAuthor(String newAuthor){
-        String returnString = newsAuthorView.getText().toString();
-        newsAuthorView.setText(newAuthor);
-        return returnString;
-    }
-
-    public String setNewsAge(String newAge){
-        String returnString = newsAgeView.getText().toString();
-        newsAgeView.setText(newAge);
-        return returnString;
+        void onListFragmentInteraction(NewsItem item);
     }
 
     public void setNewsImage(String url){
-        new DownloadImageTask(newsImageView).execute(url);
+        new NewsItemFragment.DownloadImageTask(newsImageView).execute(url);
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -173,5 +152,4 @@ public class NewsItemFragment extends Fragment {
             bmImage.setImageBitmap(result);
         }
     }
-
 }

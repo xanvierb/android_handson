@@ -19,7 +19,6 @@ public class NewsRestTask extends AsyncTask<String, Void, String>  {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
     }
 
     @Override
@@ -44,6 +43,4 @@ public class NewsRestTask extends AsyncTask<String, Void, String>  {
         }
         return "";
     }
-
-
 }

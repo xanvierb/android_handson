@@ -75,7 +75,7 @@
 
             <fragment
                 android:id="@+id/fragment"
-                android:name="nl.quintor.myhandsonapp.fragment.NewsItemFragment2"
+                android:name="nl.quintor.myhandsonapp.fragment.NewsItemFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:layout="@layout/fragment_newsitem_list2"/>
