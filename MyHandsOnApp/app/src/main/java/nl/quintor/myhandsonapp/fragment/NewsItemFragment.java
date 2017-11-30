@@ -28,9 +28,8 @@ import nl.quintor.myhandsonapp.model.NewsItem;
  * interface.
  */
 public class NewsItemFragment extends Fragment {
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
+
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -47,16 +46,6 @@ public class NewsItemFragment extends Fragment {
     public NewsItemFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static NewsItemFragment newInstance(int columnCount) {
-        NewsItemFragment fragment = new NewsItemFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +58,7 @@ public class NewsItemFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_newsitem_list2, container, false);
+        View view = inflater.inflate(R.layout.fragment_newsitem_list, container, false);
 
         newsTitleView = (TextView) view.findViewById(R.id.newsTitle);
         newsDescriptionView = (TextView) view.findViewById(R.id.newsDescription);
@@ -86,7 +75,6 @@ public class NewsItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-
             recyclerView.setAdapter(new NewsItemRecyclerViewAdapter(this, mListener));
         }
         return view;
@@ -98,9 +86,10 @@ public class NewsItemFragment extends Fragment {
         super.onAttach(context);
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
+
         } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnListFragmentInteractionListener");
+            throw new RuntimeException(context.toString()
+                    + " must implement OnListFragmentInteractionListener");
         }
     }
 
@@ -121,7 +110,6 @@ public class NewsItemFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(NewsItem item);
     }
 

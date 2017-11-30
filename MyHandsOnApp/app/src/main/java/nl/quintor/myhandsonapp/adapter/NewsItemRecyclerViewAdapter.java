@@ -47,13 +47,10 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
     public NewsItemRecyclerViewAdapter(NewsItemFragment newsItemFragment2, OnListFragmentInteractionListener mListener) {
         try {
             Gson gson = new Gson();
-            String s = new NewsRestTask().execute("https://newsapi.org/v2/top-headlines?apiKey=" + newsItemFragment2.getActivity().getResources().getString(R.string.apikey) + "&language=NL").get();
-
-
+            String s = new NewsRestTask().execute(newsItemFragment2.getActivity().getResources().getString(R.string.news_api)
+                    .replace("{apikey}",newsItemFragment2.getActivity().getResources().getString(R.string.apikey))).get();
 
             Request obj = gson.fromJson(s, Request.class);
-
-            NewsItemFragment newsItemFragment = newsItemFragment2;
 
             if(obj != null && !obj.getArticles().isEmpty()){
                 for(Article article : obj.getArticles()){
@@ -184,7 +181,6 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
             }
             return mIcon11;
         }
-
         protected void onPostExecute(Bitmap result) {
             bmImage.setImageBitmap(result);
         }
