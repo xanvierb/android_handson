@@ -24,13 +24,14 @@
             app:layout_constraintTop_toTopOf="parent"
             >
 
-            <fragment
-                android:id="@+id/fragment"
-                android:name="nl.quintor.myhandsonapp.fragment.NewsItemFragment"
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_news_item"/>
+                android:text="Hallo wereld!"
+                android:textAlignment="center" />
         </LinearLayout>
+
     </ScrollView>
 
 
