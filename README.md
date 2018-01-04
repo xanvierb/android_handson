@@ -13,7 +13,7 @@
 8. Als alles goed is gegaan start je nu de applicatie op een virtuele Pixel 2 telefoon op.
 
 ## Userinterface, Intends, Android structuur
-1. stash alle wijzigingen die je gedaan hebt met `git stash`
+1. stash alle wijzigingen die je gedaan hebt met `git stash`. Hiermee zet je alle wijzigingen die je hebt gedaan op de stash en is de local git repository terug naar de begin situatie gebracht.
 2. haal nu de branch part 2 binnen met `git checkout part-2`
 3. bekijk de android applicatie in Android studio en start deze op.
 4. Zoals je kunt zien doet het nog niets.
