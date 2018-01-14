@@ -20,15 +20,14 @@
 5. Commit al je wijzigingen met Git met het commando `git commit -m "part 2 klaar"`
 
 ## Advanced User Interface
-1. ...
-2. Haal nu de branch part-3 binnen. `git checkout part-3`
-3. Er zit 1 scherm in met wat tekst en een knop, zorg dat de tekst afhankelijk van de ingestelde locale van de telefoon in het Nederlands of het Engels wordt weergegeven.
-4. Voeg een lege activity toe (file > new > empty activity)
-5. Voeg een nieuwe List Fragment toe (file > new > Fragment > Fragment (List))
-6. Zorg dat deze nieuwe fragment wordt geladen op de Activity die je net gemaakt hebt. (Via de layout XML)
-7. De kun je de originele acitivity zo configureren dat deze de nieuwe Activity laadt als je op de knop drukt.
-8. Laat in de list fragment 15 ingredienten zien.
-9. Commit al je wijzigingen in Git met `git commit -m "part 3 klaar"`
+1. Haal nu de branch part-3 binnen. `git checkout part-3`
+2. Er zit 1 scherm in met wat tekst en een knop, zorg dat de tekst afhankelijk van de ingestelde locale van de telefoon in het Nederlands of het Engels wordt weergegeven.
+3. Voeg een lege activity toe (file > new > empty activity)
+4. Voeg een nieuwe List Fragment toe (file > new > Fragment > Fragment (List))
+5. Zorg dat deze nieuwe fragment wordt geladen op de Activity die je net gemaakt hebt. (Via de layout XML)
+6. De kun je de originele acitivity zo configureren dat deze de nieuwe Activity laadt als je op de knop drukt.
+7. Laat in de list fragment 15 ingredienten zien.
+8. Commit al je wijzigingen in Git met `git commit -m "part 3 klaar"`
 
 ## AsyncTask en REST calls
 1. Haal nu de branch part-4 binnen. `git checkout part-4`
@@ -36,7 +35,7 @@
 3. Zet de API key in het juiste resource bestand.
 4. Er is een klasse `NewsRestTask`, deze bevat al een begin, maak het af zodat er een call wordt gedaan naar de nieuws API.
 5. Test of er news wordt geladen en dit wordt weergegeven in het scherm.
-5. Er is een methode `getPublishedAt()` Dit retourneerd niet iets dat je graag op het scherm hebt. Zorg dat dit mooi wordt opgemaakt.
+6. Er is een methode `getPublishedAt()` Dit retourneerd niet iets dat je graag op het scherm hebt. Zorg dat dit mooi wordt opgemaakt.
 
 
 
