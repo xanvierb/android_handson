@@ -28,7 +28,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hallo wereld!"
+                android:text="Hier staat wat tekst dat veranderd wordt door telefoon instellingen!"
                 android:textAlignment="center" />
 
             <Button

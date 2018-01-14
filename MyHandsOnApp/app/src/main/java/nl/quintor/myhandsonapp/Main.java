@@ -19,10 +19,10 @@ public class Main extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(), "Nu al " + buttonClicks++ +" keer geklikt.", Toast.LENGTH_SHORT).show();
-                Intent myIntent = new Intent(Main.this, TweedeActivity.class);
+                //Intent myIntent = new Intent(Main.this, TweedeActivity.class);
                 //Optional parameters:
                 //myIntent.putExtra("key", value);
-                Main.this.startActivity(myIntent);
+                //Main.this.startActivity(myIntent);
             }
         });
     }
