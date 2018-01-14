@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="news_api">https://newsapi.org/v2/top-headlines?apiKey={apikey}&amp;language=NL</string>
-</resources>
