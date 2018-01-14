@@ -26,8 +26,8 @@ public class NewsRestTask extends AsyncTask<String, Void, String>  {
         try {
             URL url = new URL(strings[0]);
             HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-            httpURLConnection.setRequestMethod("GET");
-            httpURLConnection.connect();
+            // Opdracht: Stel de request methode van de HttpURLConnection in op GET.
+            // Opdracht: Zorg dat de HttpURLConnection verbinding maakt
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader
                     (httpURLConnection.getInputStream()));
             StringBuilder result= new StringBuilder();

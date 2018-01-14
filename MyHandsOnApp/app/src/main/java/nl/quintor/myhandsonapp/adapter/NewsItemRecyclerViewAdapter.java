@@ -47,10 +47,10 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
     public NewsItemRecyclerViewAdapter(NewsItemFragment newsItemFragment2, OnListFragmentInteractionListener mListener) {
         try {
             Gson gson = new Gson();
-            String s = new NewsRestTask().execute(newsItemFragment2.getActivity().getResources().getString(R.string.news_api)
+            String json = new NewsRestTask().execute(newsItemFragment2.getActivity().getResources().getString(R.string.news_api)
                     .replace("{apikey}",newsItemFragment2.getActivity().getResources().getString(R.string.apikey))).get();
 
-            Request obj = gson.fromJson(s, Request.class);
+            Request obj = gson.fromJson(json, Request.class);
 
             if(obj != null && !obj.getArticles().isEmpty()){
                 for(Article article : obj.getArticles()){
@@ -126,34 +126,9 @@ public class NewsItemRecyclerViewAdapter extends RecyclerView.Adapter<NewsItemRe
     }
 
     private String getAgeFromDate(String date){
-        try {
-            DateFormat format = new SimpleDateFormat("yyyy-M-d H:m:s", Locale.ENGLISH);
-            String toParse = date.substring(0,19).replace('T', ' ');
-            Date startDate = format.parse(toParse);
-            Date endDate   = new Date(System.currentTimeMillis()); // Set end date
-
-            long duration  = endDate.getTime() - startDate.getTime();
-
-            long diffInSeconds = TimeUnit.MILLISECONDS.toSeconds(duration);
-            long diffInMinutes = TimeUnit.MILLISECONDS.toMinutes(duration);
-            long diffInHours = TimeUnit.MILLISECONDS.toHours(duration);
-
-            return fancyDuration(diffInSeconds, diffInMinutes, diffInHours);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return "";
+        return date.toString();
     }
 
-    private String fancyDuration(long diffInSeconds, long diffInMinutes, long diffInHours){
-        if(diffInHours>0){
-            return diffInHours + " uur";
-        } if(diffInMinutes>0){
-            return diffInMinutes + " min";
-        } else {
-            return diffInSeconds + " sec";
-        }
-    }
 
     private void setNewsImage(String url, ImageView newsImageView){
         new NewsItemRecyclerViewAdapter.DownloadImageTask(newsImageView).execute(url);
