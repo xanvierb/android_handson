@@ -33,9 +33,6 @@
 1. Haal nu de branch part-4 binnen. `git checkout part-4`
 2. Maak een account aan op https://newsapi.org/ en genereer een API key.
 3. Zet de API key in het juiste resource bestand.
-4. Er is een klasse `NewsRestTask`, deze bevat al een begin, maak het af zodat er een call wordt gedaan naar de nieuws API.
+4. Er is een klasse `NewsRestTask`, deze is al helemaal geschreven. Er zijn 2 regels die afgemaakt moeten worden, maak het af zodat er een call wordt gedaan naar de nieuws API.
 5. Test of er news wordt geladen en dit wordt weergegeven in het scherm.
-6. Er is een methode `getPublishedAt()` Dit retourneerd niet iets dat je graag op het scherm hebt. Zorg dat dit mooi wordt opgemaakt.
-
-
-
+6. Er is een methode `getAgeFromDate()` Dit retourneerd niet iets dat je graag op het scherm hebt, zorg dat dit mooi wordt opgemaakt.
