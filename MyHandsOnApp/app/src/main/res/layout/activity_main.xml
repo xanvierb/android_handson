@@ -30,6 +30,13 @@
                 android:layout_height="wrap_content"
                 android:text="Hallo wereld!"
                 android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Klik me" />
+
         </LinearLayout>
 
     </ScrollView>
