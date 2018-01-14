@@ -1,5 +1,6 @@
 package nl.quintor.myhandsonapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,7 +18,11 @@ public class Main extends AppCompatActivity  {
         helloWorldButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Nu al " + buttonClicks++ +" keer geklikt.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Nu al " + buttonClicks++ +" keer geklikt.", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(Main.this, TweedeActivity.class);
+                //Optional parameters:
+                //myIntent.putExtra("key", value);
+                Main.this.startActivity(myIntent);
             }
         });
     }
