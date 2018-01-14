@@ -3,6 +3,8 @@ package nl.quintor.myhandsonapp;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,6 +26,9 @@ public class TweedeActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        
+
+
     }
 
 }
